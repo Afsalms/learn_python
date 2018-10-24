@@ -2,9 +2,10 @@ from random import shuffle
 import math
 
 """
+idea behind: It is easy to sort smaller list and easy to merge sorted list
 Split the entire array to element
 then group toghter in sorted order
-Used in e commerse websites for recomendation and price comparison
+Application: Used in e commerse websites for recomendation and price comparison
 
 """
 
