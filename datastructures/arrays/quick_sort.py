@@ -14,7 +14,6 @@ application: Medical and industrial monitoring, Control for aircraft, Defence
 def partition(arr,low,high): 
     i = ( low-1 )
     pivot = arr[high] 
-  
     for j in range(low , high): 
         if   arr[j] <= pivot: 
             i = i+1 
@@ -26,14 +25,16 @@ def partition(arr,low,high):
 def quickSort(arr,low,high): 
     if low < high: 
         pi = partition(arr,low,high)
+        print("partition index: ", pi)
         quickSort(arr, low, pi-1) 
         quickSort(arr, pi+1, high) 
 
 
 
 if __name__ == '__main__':
-    a = list(range(10))
-    shuffle(a)
+    # a = list(range(10))
+    a = [0, 5, 2, 7, 6, 3, 4, 1, 9, 8]
+    # shuffle(a)
     print(a)
     quickSort(a, 0, len(a)-1)
     print(a)
