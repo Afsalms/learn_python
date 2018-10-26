@@ -11,12 +11,11 @@ application: Small list and list with disorder is very less
 """
 
 
-def insertion_sort_method(a):
-    for i in range(len(a)):
-        position = int(i)
-        while (position> 0 and a[position-1]> a[position]):
-            a[position-1], a[position] = a[position], a[position-1]
-            position -= 1
+def insertion_sort_algorithm(a):
+    for i in range(len(a)-1):
+        for j in range(i+1, 0, -1):
+            if a[j] < a[j-1]:
+                a[j], a[j-1] = a[j-1], a[j]
     return a
 
 
@@ -24,5 +23,5 @@ if __name__ == '__main__':
     a = list(range(100))
     shuffle(a)
     print(a)
-    b = insertion_sort_method(a)
+    b = insertion_sort_algorithm(a)
     print(b)
