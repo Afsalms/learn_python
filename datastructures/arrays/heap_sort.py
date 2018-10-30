@@ -1,50 +1,32 @@
 
 
-def heapsort( aList ):
-    print("list is :", aList)
-    length = len( aList ) - 1
-    leastParent = length / 2
-    print("length is: ", length)
-    print("leastParent is: ", leastParent)
-    for i in range ( leastParent, -1, -1 ):
-        print("i is: ", i)
-        moveDown( aList, i, length )
-    for i in range ( length, 0, -1 ):
-        if aList[0] > aList[i]:
-            swap( aList, 0, i )
-            moveDown( aList, 0, i - 1 )
-
-
-def moveDown( aList, first, last ):
-    largest = 2 * first + 1
-    while largest <= last:
-        # right child exists and is larger than left child
-        if ( largest < last ) and ( aList[largest] < aList[largest + 1] ):
-            largest += 1
-        # right child is larger than parent
-        if aList[largest] > aList[first]:
-            swap( aList, largest, first )
-            # move down to largest child
-            first = largest;
-            largest = 2 * first + 1
-        else:
-            return # force exit
-
-
-def swap( A, x, y ):
-    A[x], A[y] = A[y], A[x]
-
-
-
-a = range(10)
-from random import shuffle
-
-shuffle(a)
-
-print(a)
-
-heapsort(a)
-print(a)
-
-
-
+def heapSort(a):
+    def sift(start, count):
+        root = start
+ 
+        while root * 2 + 1 < count:
+            child = root * 2 + 1
+            if child < count - 1 and a[child] < a[child + 1]:
+                child += 1
+            if a[root] < a[child]:
+                a[root], a[child] = a[child], a[root]
+                root = child
+            else:
+                return
+ 
+    count = len(a)
+    start = count / 2 - 1
+    end = count - 1
+ 
+    while start >= 0:
+        sift(start, count)
+        start -= 1
+ 
+    while end > 0:
+        a[end], a[0] = a[0], a[end]
+        sift(0, end)
+        end -= 1
+ 
+a = [-8,0,1,3,11,35,68]
+heapSort(a)
+print a # [-8, 0, 1, 3, 11, 35, 68]
